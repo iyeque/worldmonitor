@@ -3,7 +3,7 @@
 
 import { latestProtocolVersion, supportedProtocolVersions } from './mcp/constants';
 
-+export const config = { runtime: 'nodejs' };
+export const config = { runtime: 'edge' };
 
 export { default } from './mcp/handler';
 export { mcpHandler } from './mcp/handler';
