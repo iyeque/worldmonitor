@@ -1,8 +1,15 @@
-// Vercel-edge route entry. The implementation lives under ./mcp/;
-// this file stays here so the deployed route URL (`/api/mcp`) doesn't move.
-
-import handler from './mcp/handler';
+// MCP is hosted separately on the Hobby deployment.
+// Keep this lightweight endpoint so the dashboard deployment stays within
+// Vercel Hobby's Edge Function size limit.
 
 export const config = { runtime: 'edge' };
 
-export default handler;
+export default function handler(): Response {
+  return new Response(
+    JSON.stringify({ error: 'MCP endpoint is hosted separately.' }),
+    {
+      status: 503,
+      headers: { 'content-type': 'application/json; charset=utf-8' },
+    },
+  );
+}
